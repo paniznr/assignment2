@@ -1441,7 +1441,10 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 			jumped = true;
 		}
 	}
-	else if (absltxdist > 2 || absltydist > 2)
+	//else if (absltxdist > 2 || absltydist > 2)
+	else if (xdist > 2 || ydist > 2)
+	//^^^^^this if statement worked better for me for now
+
 		//SHOULD THIS BE else if (absltxdist>2 && absltydist>2)
 		//OR POSSIBLY else if (absltdist>2)
 		//if it moved too many
@@ -1522,13 +1525,16 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 		return false;
 	}
 	//if it is moving in the wrong direction
+	
 	else if (player == 2 && ydist < 0 && (CMCheckersBoard[xvalFROM][yvalFROM] == REDMULE) || (CMCheckersBoard[xvalFROM][yvalFROM] == REDSOLDIER))
 	{
 		//changed sign of y
 		cout << "Error: illegal move";
 		return false;
 	}
-	else if ((absltxdist == 1) && (absltydist == 1))
+	//else if ((absltxdist == 1) && (absltydist == 1))
+	else if ((xdist == 1) && (ydist == 1))
+	//^^^^^^^^^^^ this if statement worked better for me for now
 	{
 		//moved diagonally 1
 		if (CMCheckersBoard[xvalFROM][yvalFROM] == WHITESOLDIER)
@@ -1552,7 +1558,9 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 			CMCheckersBoard[xvalTO][yvalTO] = REDMULE;
 		}
 	}
-	else if (absltxdist == 2 && absltydist == 2)
+	//else if (absltxdist == 2 && absltydist == 2)
+	else if (xdist == 2 && ydist == 2)
+	//^^^^^^^^^^^^this if statement worked better for me for now
 	{
 		//moved diagonally 2 (jump)
 		CMCheckersBoard[xvalTO][yvalTO] = CMCheckersBoard[xvalFROM][yvalFROM];
