@@ -207,9 +207,9 @@ int main()
 				}
 				else if ((myCMCheckersBoard[xvalFROM][yvalFROM] != WHITEKING) && (myCMCheckersBoard[xvalFROM][yvalFROM] != WHITEMULE) && (myCMCheckersBoard[xvalFROM][yvalFROM] != WHITESOLDIER))
 				{
-					cout << myCMCheckersBoard[xvalFROM][yvalFROM];
-					cout << xvalFROM;
-					cout << yvalFROM;
+					//cout << myCMCheckersBoard[xvalFROM][yvalFROM];
+					//cout << xvalFROM;
+					//cout << yvalFROM;
 					cerr << "ERROR: That square is empty." << endl
 						<< "Try again" << endl;
 					continue;
@@ -286,7 +286,7 @@ int main()
 				}
 				else if ((future_placement >= (numRowsInBoard*numRowsInBoard)) || (future_placement < 0))
 				{
-					cerr << "ERROR: That square is not on the board." << endl
+					cerr << "ERROR: It is not possible to move to a square that is not on the board." << endl
 						<< "Try again" << endl;
 					continue;
 				}
