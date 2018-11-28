@@ -318,7 +318,11 @@ int main()
 
 				}
 
-
+				else
+				{
+                    			right_move=true;
+                		}
+                
 
 			}
 
