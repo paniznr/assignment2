@@ -1271,7 +1271,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 			if (CMCheckersBoard[numRowsInBoard - 1][yvalFROM] == 0)
 			{
 				//middle is empty
-				cout << "error; illegal move";
+				cout << "error: illegal move";
 				return false;
 			}
 			//if it didnt make it into that  if, then it was just incremented and decremented so its like nothing even happened so its okay
@@ -1294,7 +1294,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 			if (CMCheckersBoard[numRowsInBoard - 1][yvalFROM] == 0)
 			{
 				//middle is empty
-				cout << "error; illegal move";
+				cout << "error: illegal move";
 				return false;
 			}
 			yvalFROM++;
@@ -1317,7 +1317,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 			if (CMCheckersBoard[0][yvalFROM] == 0)
 			{
 				//middle is empty
-				cout << "error; illegal move";
+				cout << "error: illegal move";
 				return false;
 			}
 			yvalFROM--;
@@ -1338,7 +1338,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 			if (CMCheckersBoard[0][yvalFROM] == 0)
 			{
 				//middle is empty
-				cout << "error; illegal move";
+				cout << "error: illegal move";
 				return false;
 			}
 			yvalFROM++;
@@ -1360,7 +1360,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 			if (CMCheckersBoard[0][yvalFROM] == 0)
 			{
 				//middle is empty
-				cout << "error; illegal move";
+				cout << "error: illegal move";
 				return false;
 			}
 			yvalFROM--;
@@ -1381,7 +1381,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 			if (CMCheckersBoard[0][yvalFROM] == 0)
 			{
 				//middle is empty
-				cout << "error; illegal move";
+				cout << "error: illegal move";
 				return false;
 			}
 			yvalFROM++;
@@ -1402,7 +1402,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 			if (CMCheckersBoard[numRowsInBoard - 1][yvalFROM] == 0)
 			{
 				//middle is empty
-				cout << "error; illegal move";
+				cout << "error: illegal move";
 				return false;
 			}
 			yvalFROM--;
@@ -1423,7 +1423,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 			if (CMCheckersBoard[numRowsInBoard - 1][yvalFROM] == 0)
 			{
 				//middle is empty
-				cout << "error; illegal move";
+				cout << "error: illegal move";
 				return false;
 			}
 			yvalFROM++;
@@ -1442,7 +1442,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 		//OR POSSIBLY else if (absltdist>2)
 		//if it moved too many
 	{
-		cout << "Error;  illegal move";
+		cout << "Error: illegal move";
 		return false;
 	}
 	else if (absltxdist == 2 && absltydist == 2)
@@ -1457,7 +1457,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 				yvalFROM++;
 				if (CMCheckersBoard[xvalFROM][yvalFROM] == 0)
 				{
-					cout << "error; illegal move";
+					cout << "error: illegal move";
 					return false;
 				}
 				yvalFROM--;
@@ -1472,7 +1472,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 				yvalFROM--;
 				if (CMCheckersBoard[xvalFROM][yvalFROM] == 0)
 				{
-					cout << "error; illegal move";
+					cout << "error: illegal move";
 					return false;
 				}
 				yvalFROM++;
@@ -1487,7 +1487,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 				yvalFROM--;
 				if (CMCheckersBoard[xvalFROM][yvalFROM] == 0)
 				{
-					cout << "error; illegal move";
+					cout << "error: illegal move";
 					return false;
 				}
 				yvalFROM++;
@@ -1502,7 +1502,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 				yvalFROM++;
 				if (CMCheckersBoard[xvalFROM][yvalFROM] == 0)
 				{
-					cout << "error; illegal move";
+					cout << "error: illegal move";
 					return false;
 				}
 				yvalFROM--;
@@ -1514,14 +1514,14 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 	else if (player == 1 && ydist > 0 && (CMCheckersBoard[xvalFROM][yvalFROM] == WHITEMULE) || (CMCheckersBoard[xvalFROM][yvalFROM] == WHITESOLDIER))
 	{
 		//changed sign of y
-		cout << "Error; illegal move";
+		cout << "Error: illegal move";
 		return false;
 	}
 	//if it is moving in the wrong direction
 	else if (player == 2 && ydist < 0 && (CMCheckersBoard[xvalFROM][yvalFROM] == REDMULE) || (CMCheckersBoard[xvalFROM][yvalFROM] == REDSOLDIER))
 	{
 		//changed sign of y
-		cout << "Error; illegal move";
+		cout << "Error: illegal move";
 		return false;
 	}
 	else if ((absltxdist == 1) && (absltydist == 1))
