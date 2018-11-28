@@ -310,8 +310,35 @@ int main()
 					cerr << "ERROR: Moving to that square is not legal, Try again." << endl;
 					continue;
 				}
+				
+				else
+				{
+					//right_move = true;
+				
+					move_made = MakeMove(myCMCheckersBoard, numRowsInBoard, turn, intended_move, future_placement, jumped);
 
-				else if (((IsJump(myCMCheckersBoard, numRowsInBoard, turn, xvalTO, yvalTO)) == true) && (IsMove1Square(myCMCheckersBoard, numRowsInBoard, turn, xvalTO, yvalTO)) == true)
+					DisplayBoard(myCMCheckersBoard, numRowsInBoard);
+
+					if (move_made == false)
+					{
+						
+						cerr << "ERROR: Moving to that square is not legal, Try again." << endl;
+					}
+					else if (jumped == true)
+					{
+						if (((IsJump(myCMCheckersBoard, numRowsInBoard, turn, xvalTO, yvalTO)) == true) && ((IsMove1Square(myCMCheckersBoard, numRowsInBoard, turn, xvalTO, yvalTO)) == true))
+						{
+							cout << "You can jump again, Please enter the next square you wish to move your checker to" << endl;
+						}
+					}
+					else
+					{
+						right_move = true;
+					}
+					
+				}
+
+				/*else if (((IsJump(myCMCheckersBoard, numRowsInBoard, turn, xvalTO, yvalTO)) == true) && (IsMove1Square(myCMCheckersBoard, numRowsInBoard, turn, xvalTO, yvalTO)) == true)
 				{
 					if ((abs(ydist) == 1))
 					{
@@ -325,7 +352,7 @@ int main()
 				else
 				{
                     			right_move=true;
-                		}
+                		}*/
                 
 
 			}
