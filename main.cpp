@@ -291,8 +291,8 @@ int main()
 					continue;
 				}
 
-				else if (!(future_placement == NOPLAYER))
-			//	else if (!((myCMCheckersBoard[xvalTO][yvalTO])==NOPLAYER))
+				//else if (!(future_placement == NOPLAYER))
+				else if (!((myCMCheckersBoard[xvalTO][yvalTO])==NOPLAYER))
 				{
 					cout << "ERROR: It is not possible to move to a square that is already occupied." << endl	<< "Try again" << endl;
 					continue;
