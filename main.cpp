@@ -291,12 +291,11 @@ int main()
 				 }*/
 
 
-			/*	double future_placement = 0;
-				double future_placement2 = 0;
-				int intfutureplacement = 0;
-				intfutureplacement = future_placement;
-
-				future_placement2 = intfutureplacement;*/
+				 /*	double future_placement = 0;
+					 double future_placement2 = 0;
+					 int intfutureplacement = 0;
+					 intfutureplacement = future_placement;
+					 future_placement2 = intfutureplacement;*/
 
 				if (!future_placement)// || (!(future_placement == future_placement2)))
 
@@ -342,6 +341,10 @@ int main()
 					}
 
 				}
+				else
+				{
+					right_move = true;
+				}
 
 			}
 
@@ -367,7 +370,205 @@ int main()
 	}
 	else
 	{
+	if (turn % 2 == 1)
+	{
+		turn = REDPLAYER;
+		jumps = CountJumps(myCMCheckersBoard, numRowsInBoard, turn, xIndicesJump, yIndicesJump);
+		moves = CountMove1Squares(myCMCheckersBoard, numRowsInBoard, turn, xIndicesMove, yIndicesMove);
 
+
+
+		if (jumps == 0 && moves == 0)
+		{
+			cerr << "Red is unable to move.\nGAME OVER, White has won.\nEnter any character to close the game.\n";
+		}
+		else
+		{
+			//cout << "White takes a turn.\n";
+			//cout << "Enter the square number of the checker you want to move";
+			//cin >> intended_move;
+
+			//xvalFROM = intended_move % numRowsInBoard;
+			//yvalFROM = intended_move / numRowsInBoard;
+
+			cout << "Red takes a turn.\n";
+			while (right_move == false)
+			{
+				//	cout << "Red takes a turn.\n";
+				cout << "Enter the square number of the checker you want to move";
+				cin >> intended_move;
+
+				xvalFROM = intended_move % numRowsInBoard;
+				yvalFROM = intended_move / numRowsInBoard;
+
+				if (!intended_move)
+				{
+					cerr << "ERROR: You did not enter an integer" << endl
+						<< "Try again" << endl;
+					cin.clear();
+					cin.ignore();
+					continue;
+
+				}
+				else if ((intended_move >= (numRowsInBoard*numRowsInBoard)) || (intended_move < 0))
+				{
+					cerr << "ERROR: That square is not on the board." << endl
+						<< "Try again" << endl;
+					continue;
+				}
+				else if ((myCMCheckersBoard[xvalFROM][yvalFROM] == WHITEKING) || (myCMCheckersBoard[xvalFROM][yvalFROM] == WHITESOLDIER) || (myCMCheckersBoard[xvalFROM][yvalFROM] == WHITEMULE))
+				{
+
+					cerr << "ERROR: That square contains an opponent's checker." << endl
+						<< "Try again" << endl;
+					continue;
+				}
+				else if ((myCMCheckersBoard[xvalFROM][yvalFROM] == 0))
+				{
+					cout << myCMCheckersBoard[xvalFROM][yvalFROM];
+					cout << xvalFROM;
+					cout << yvalFROM;
+					//Do the above cout statements need to be there
+					cerr << "ERROR: That square is empty." << endl
+						<< "Try again" << endl;
+					continue;
+				}
+				//else if (IsJump(myCMCheckersBoard, numRowsInBoard, turn, xvalFROM, yvalFROM))
+
+
+				///GO BACK AND CHECK
+				else if (CheckList(xIndicesJump, yIndicesJump, xvalFROM, yvalFROM) == true)
+				{
+					cerr << "ERROR: You can jump with another checker, you may not move your chosen checker." << endl
+
+						<< "You can jump using checkers on the following squares : "
+						<< "Try again" << endl;
+					continue;
+				}
+				///GO BACK AND CHECK
+				else if (!(CheckList(xIndicesMove, yIndicesMove, xvalFROM, yvalFROM)))
+				{
+					cerr << "ERROR: There is no legal move for this checker." << endl
+						<< "Try again" << endl;
+					continue;
+				}
+				else
+				{
+					right_move = true;
+				}
+
+			}
+
+
+			right_move = false;
+			while (right_move == false)
+			{
+				cout << "Enter the square number of the square you want to move your checker to" << endl;
+				cin >> future_placement;
+
+				xvalTO = future_placement % numRowsInBoard;
+				yvalTO = future_placement / numRowsInBoard;
+
+				/*	xvalFROM = intended_move % numRowsInBoard;
+					yvalFROM = intended_move / numRowsInBoard;*/
+
+				unsigned int absltxdist = 0;
+				unsigned int absltydist = 0;
+
+				xdist = (xvalTO - xvalFROM);
+				/*
+				 if (xdist ==0)
+				 {
+				 cerr
+				 }
+				 {
+				 absltxdist = (xdist*-1);
+				 }*/
+				ydist = (yvalTO - yvalFROM);
+				/*
+				 if (ydist < 0)
+				 {
+				 absltydist = (ydist*-1);
+				 }*/
+
+
+				 /*	double future_placement = 0;
+					 double future_placement2 = 0;
+					 int intfutureplacement = 0;
+					 intfutureplacement = future_placement;
+					 future_placement2 = intfutureplacement;*/
+
+				if (!future_placement)// || (!(future_placement == future_placement2)))
+
+
+				{
+					cerr << "ERROR: You did not enter an integer" << endl
+						<< "Try again" << endl;
+					cin.clear();
+					cin.ignore();
+					continue;
+
+				}
+				else if ((future_placement >= (numRowsInBoard*numRowsInBoard)) || (future_placement < 0))
+				{
+					cerr << "ERROR: That square is not on the board." << endl
+						<< "Try again" << endl;
+					continue;
+				}
+
+				//else if (!(future_placement == NOPLAYER))
+				else if (!((myCMCheckersBoard[xvalTO][yvalTO]) == NOPLAYER))
+				{
+					cout << "ERROR: It is not possible to move to a square that is already occupied." << endl << "Try again" << endl;
+					continue;
+				}
+
+				else if (xdist == 0)
+				{
+					cerr << "ERROR: Illegal move" << endl;
+				}
+				else if (ydist == 0)
+				{
+					cerr << "ERROR: Illegal move" << endl;
+				}
+
+				else if (((IsJump(myCMCheckersBoard, numRowsInBoard, turn, xvalTO, yvalTO)) == true) && (IsMove1Square(myCMCheckersBoard, numRowsInBoard, turn, xvalTO, yvalTO)) == true)
+				{
+					if ((abs(ydist) == 1))
+					{
+						cerr << "ERROR: You can jump with this checker, you must jump not move 1 space" << endl
+							<< "Try again" << endl;
+						continue;
+					}
+
+				}
+				else
+				{
+					right_move = true;
+				}
+
+			}
+
+			move_made = MakeMove(myCMCheckersBoard, numRowsInBoard, turn, intended_move, future_placement, jumped);
+
+			DisplayBoard(myCMCheckersBoard, numRowsInBoard);
+
+			if (move_made == false)
+			{
+				cerr << "ERROR: Moving to that square is not legal, Try again." << endl;
+			}
+			else
+			{
+				if (jumped == true)
+				{
+					if (((IsJump(myCMCheckersBoard, numRowsInBoard, turn, xvalTO, yvalTO)) == true) && ((IsMove1Square(myCMCheckersBoard, numRowsInBoard, turn, xvalTO, yvalTO)) == true))
+					{
+						cout << "You can jump again, Please enter the next square you wish to move your checker to" << endl;
+					}
+				}
+			}
+		}
+	}
 	}
 
 
@@ -952,7 +1153,7 @@ bool IsJump(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsInBo
 				//moving left in WHITE perspective
 				//SPECIAL
 				if (CMCheckersBoard[yLoc + 2][1] == 0)
-			//	if (CMCheckersBoard[yLoc+2][1]=)
+					//	if (CMCheckersBoard[yLoc+2][1]=)
 				{
 					return true;
 				}
