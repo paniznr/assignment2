@@ -1253,10 +1253,19 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 	{
 		absltxdist = (xdist*-1);
 	}
+	else
+	{
+		absltxdist = xdist;
+	}
+
 	ydist = (yvalTO - yvalFROM);
 	if (ydist < 0)
 	{
 		absltydist = (ydist*-1);
+	}
+	else
+	{
+		absltydist = ydist;
 	}
 	//if (!IsJump(CMCheckersBoard, numRowsInBoard, player, xvalFROM, yvalFROM))
 	//{
