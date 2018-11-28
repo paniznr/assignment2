@@ -1265,7 +1265,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 		}
 
 	}
-	else if (numRowsInBoard - 2 == absltxdist && absltydist == 2)
+	else if (((numRowsInBoard - 2 )== xdist || (numRowsInBoard - 2 )== absltxdist) && (ydist == 2))
 	{
 		//cross board jump
 		//check if middle is empty
