@@ -277,7 +277,7 @@ int main()
 
 				if (!future_placement)
 				{
-					cerr << "ERROR: You did not enter an integer" << endl
+					cerr << "ERROR: you did not enter an integer" << endl
 						<< "Try again" << endl;
 					cin.clear();
 					cin.ignore();
