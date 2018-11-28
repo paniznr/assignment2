@@ -3,8 +3,8 @@
 //  main.cpp
 //  assignment2
 //
-//  Created by Paniz Najjarrezaparast, Sharanji Vidi, and Aliyah Nanji on 2018-11-28.
-//  Copyright © 2018 Paniz Najjarrezaparast, Sharanji Vidi, and Aliyah Nanji. All rights reserved.
+//  Created by Paniz Najjarrezaparast, Sharanjit Vidi, and Aliyah Nanji on 2018-11-28.
+//  Copyright © 2018 Paniz Najjarrezaparast, Sharanjit Vidi, and Aliyah Nanji. All rights reserved.
 //
 #include <iostream>
 #include <fstream>
@@ -167,7 +167,7 @@ int main()
 		}
 		else
 		{
-			//cout << "White takes a turn.\n";
+			cout << "White takes a turn.\n";
 			//cout << "Enter the square number of the checker you want to move";
 			//cin >> intended_move;
 
@@ -176,8 +176,8 @@ int main()
 
 			while (right_move == false)
 			{
-				cout << "White takes a turn.\n";
-				cout << "Enter the square number of the checker you want to move";
+				//cout << "White takes a turn.\n";
+				cout << "Enter the square number of the checker you want to move" << endl;
 				cin >> intended_move;
 
 				xvalFROM = intended_move % numRowsInBoard;
