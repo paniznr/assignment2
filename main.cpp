@@ -3,8 +3,8 @@
 //  main.cpp
 //  assignment2
 //
-//  Created by Paniz Najjarrezaparast, Sharanjit Vidi, and Aliyah Nanji on 2018-11-28.
-//  Copyright © 2018 Paniz Najjarrezaparast, Sharanjit Vidi, and Aliyah Nanji. All rights reserved.
+//  Created by Paniz Najjarrezaparast, Sharanjit Virdi, and Aliyah Nanji on 2018-11-28.
+//  Copyright © 2018 Paniz Najjarrezaparast, Sharanjit Virdi, and Aliyah Nanji. All rights reserved.
 //
 #include <iostream>
 #include <fstream>
@@ -301,10 +301,14 @@ int main()
 				else if (xdist == 0)
 				{
 					cerr << "ERROR: Illegal move" << endl;
+					cerr << "ERROR: Moving to that square is not legal, Try again." << endl;
+					continue;
 				}
 				else if (ydist == 0)
 				{
 					cerr << "ERROR: Illegal move" << endl;
+					cerr << "ERROR: Moving to that square is not legal, Try again." << endl;
+					continue;
 				}
 
 				else if (((IsJump(myCMCheckersBoard, numRowsInBoard, turn, xvalTO, yvalTO)) == true) && (IsMove1Square(myCMCheckersBoard, numRowsInBoard, turn, xvalTO, yvalTO)) == true)
