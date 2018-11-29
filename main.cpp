@@ -1,4 +1,11 @@
 
+//
+//  main.cpp
+//  assignment2
+//
+//  Created by Paniz Najjarrezaparast, Sharanjit Virdi, and Aliyah Nanji on 2018-11-28.
+//  Copyright © 2018 Paniz Najjarrezaparast, Sharanjit Virdi, and Aliyah Nanji. All rights reserved.
+//
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -59,24 +66,6 @@ bool CheckWin(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 
 int main()
 {
-/*
-	This is a code that simulates a checkers game. This game is played with 2 players
-	The white player starts and chooses a checker to move. The program checks if that input is valid or not. There are error messages that validate the user input, testing for all the wrong cases.
-
-	If the input is valid, the user is asked for a square where the checker will be moved to. 
-Then, it is checked if a move or a jump can be made. If this not possible, an error message is printed.
-
-If a move can be made then the player moves the checker. If a jump can be made, the player jumps over the opponent’s checker.
-
-It is important to note that king can move or jump forwards and backwards, while soldiers and mules can only move or jump forward. Also, this is a circular board, so moves and jumps can be made across the board. Finally, if a player’s checker has jumped once and it can jump again, it must jump
-
-Once the white player is done with its turn, it is the red player’s turn who follows the same rules as the other one.
-
-	The white and the red keep taking turns. The game terminates when one of the player wins.
-
-	Created by Paniz Najjarrezaparast, Sharanjit Virdi, and Aliyah Nanji on 2018-11-28.
-	Copyright © 2018 Paniz Najjarrezaparast, Sharanjit Virdi, and Aliyah Nanji. All rights reserved.
-	*/
 
 
 	int myCMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE] = { 0 };
@@ -119,7 +108,6 @@ Once the white player is done with its turn, it is the red player’s turn who f
 		{
 			//number that was input is too large
 			cout << "Enter the number of squares along each edge of the board\n";
-			//cin>>numRowsInBoard;
 
 			if (!(cin >> numRowsInBoard))
 			{
@@ -289,20 +277,20 @@ Once the white player is done with its turn, it is the red player’s turn who f
 
 					else if (!((myCMCheckersBoard[xvalTO][yvalTO]) == NOPLAYER))
 					{
-						cout << "ERROR: It is not possible to move to a square that is already occupied." << endl << "Try again" << endl;
+						cerr << "ERROR: It is not possible to move to a square that is already occupied." << endl << "Try again" << endl;
 						continue;
 					}
 
 					else if (xdist == 0)
 					{
 						cerr << "ERROR: Illegal move" << endl;
-						cerr << "ERROR: Moving to that square is not legal, Try again." << "SET" << endl;
+						cerr << "ERROR: Moving to that square is not legal, Try again."  << endl;
 						continue;
 					}
 					else if (ydist == 0)
 					{
 						cerr << "ERROR: Illegal move" << endl;
-						cerr << "ERROR: Moving to that square is not legal, Try again." << "GET" << endl;
+						cerr << "ERROR: Moving to that square is not legal, Try again." << endl;
 						continue;
 					}
 
@@ -316,7 +304,7 @@ Once the white player is done with its turn, it is the red player’s turn who f
 						if (move_made == false)
 						{
 
-							cerr << "ERROR: Moving to that square is not legal, Try again." << "GO" << endl;
+							cerr << "ERROR: Moving to that square is not legal, Try again."  << endl;
 						}
 						else if (jumped == true)
 						{
@@ -333,21 +321,7 @@ Once the white player is done with its turn, it is the red player’s turn who f
 
 					}
 
-					/*else if (((IsJump(myCMCheckersBoard, numRowsInBoard, turn, xvalTO, yvalTO)) == true) && (IsMove1Square(myCMCheckersBoard, numRowsInBoard, turn, xvalTO, yvalTO)) == true)
-					{
-						if ((abs(ydist) == 1))
-						{
-							cerr << "ERROR: You can jump with this checker, you must jump not move 1 space" << endl
-								<< "Try again" << endl;
-							continue;
-						}
-
-					}
-
-					else
-					{
-									right_move=true;
-							}*/
+					
 
 
 				}
@@ -371,15 +345,10 @@ Once the white player is done with its turn, it is the red player’s turn who f
 			{
 				cout << "Red takes a turn.\n";
 				right_move = false;
-				//cout << "Enter the square number of the checker you want to move";
-				//cin >> intended_move;
-
-				//xvalFROM = intended_move % numRowsInBoard;
-				//yvalFROM = intended_move / numRowsInBoard;
+				
 
 				while (right_move == false)
 				{
-					//cout << "Red takes a turn.\n";
 					cout << "Enter the square number of the checker you want to move" << endl;
 					cin >> intended_move;
 
@@ -410,17 +379,12 @@ Once the white player is done with its turn, it is the red player’s turn who f
 					}
 					else if ((myCMCheckersBoard[xvalFROM][yvalFROM] != REDKING) && (myCMCheckersBoard[xvalFROM][yvalFROM] != REDMULE) && (myCMCheckersBoard[xvalFROM][yvalFROM] != REDSOLDIER))
 					{
-						//cout << myCMCheckersBoard[xvalFROM][yvalFROM];
-						//cout << xvalFROM;
-						//cout << yvalFROM;
+						
 						cerr << "ERROR: That square is empty." << endl
 							<< "Try again" << endl;
 						continue;
 					}
-					//else if (IsJump(myCMCheckersBoard, numRowsInBoard, turn, xvalFROM, yvalFROM))
-
-
-					///GO BACK AND CHECK
+					
 					else if (CheckList(xIndicesJump, yIndicesJump, xvalFROM, yvalFROM) == true)
 					{
 						cerr << "ERROR: You can jump with another checker, you may not move your chosen checker." << endl
@@ -429,8 +393,7 @@ Once the white player is done with its turn, it is the red player’s turn who f
 							<< "Try again" << endl;
 						continue;
 					}
-					///GO BACK AND CHECK
-					//else if (!(CheckList(xIndicesMove, yIndicesMove, xvalFROM, yvalFROM)))
+					
 					else if (CheckList(xIndicesMove, yIndicesMove, xvalFROM, yvalFROM) == false)
 					{
 						cerr << "ERROR: There is no legal move for this checker." << endl
@@ -454,8 +417,7 @@ Once the white player is done with its turn, it is the red player’s turn who f
 					xvalTO = future_placement % numRowsInBoard;
 					yvalTO = future_placement / numRowsInBoard;
 
-					//xvalFROM = intended_move % numRowsInBoard;
-					//yvalFROM = intended_move / numRowsInBoard;
+					
 
 				//	unsigned
 					int absltxdist = 0;
@@ -493,13 +455,13 @@ Once the white player is done with its turn, it is the red player’s turn who f
 					else if (xdist == 0)
 					{
 						cerr << "ERROR: Illegal move" << endl;
-						cerr << "ERROR: Moving to that square is not legal, Try again." << "SET" << endl;
+						cerr << "ERROR: Moving to that square is not legal, Try again."<< endl;
 						continue;
 					}
 					else if (ydist == 0)
 					{
 						cerr << "ERROR: Illegal move" << endl;
-						cerr << "ERROR: Moving to that square is not legal, Try again." << "GET" << endl;
+						cerr << "ERROR: Moving to that square is not legal, Try again." << endl;
 						continue;
 					}
 
@@ -513,7 +475,7 @@ Once the white player is done with its turn, it is the red player’s turn who f
 						if (move_made == false)
 						{
 
-							cerr << "ERROR: Moving to that square is not legal, Try again." << "GO" << endl;
+							cerr << "ERROR: Moving to that square is not legal, Try again."  << endl;
 						}
 						else if (jumped == true)
 						{
@@ -553,7 +515,6 @@ Once the white player is done with its turn, it is the red player’s turn who f
 			}
 		}
 
-		cout << "HELLO!" << endl;
 
 		//turn++;
 		cout << turn << endl;
@@ -755,6 +716,7 @@ void DisplayBoard(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRo
 		}
 		cout << endl;
 	}
+	cout<<endl;
 }
 
 
@@ -1735,7 +1697,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 				//yvalFROM++;
 				if (CMCheckersBoard[xvalFROM - 1][yvalFROM + 1] == 0)
 				{
-					cout << "Error: Illegal move" << endl << "J" << endl;
+					cout << "Error: Illegal move" << endl ;
 					return false;
 				}
 				//yvalFROM--;
@@ -1750,7 +1712,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 				//yvalFROM--;
 				if (CMCheckersBoard[xvalFROM - 1][yvalFROM - 1] == 0)
 				{
-					cout << "Error: Illegal move" << endl << "K" << endl;
+					cout << "Error: Illegal move" << endl;
 					return false;
 				}
 				//yvalFROM++;
@@ -1765,7 +1727,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 				//yvalFROM--;
 				if (CMCheckersBoard[xvalFROM + 1][yvalFROM - 1] == 0)
 				{
-					cout << "Error: Illegal move" << endl << "L" << endl;
+					cout << "Error: Illegal move" << endl ;
 					return false;
 				}
 				//yvalFROM++;
@@ -1780,7 +1742,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 				//yvalFROM++;
 				if (CMCheckersBoard[xvalFROM - +1][yvalFROM + 1] == 0)
 				{
-					cout << "Error: Illegal move" << endl << "M" << endl;
+					cout << "Error: Illegal move" << endl ;
 					return false;
 				}
 				//yvalFROM--;
@@ -1799,7 +1761,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 	else if (player == 1 && ydist < 0 && ((CMCheckersBoard[xvalFROM][yvalFROM] == WHITEMULE) || (CMCheckersBoard[xvalFROM][yvalFROM] == WHITESOLDIER)))
 	{
 		//changed sign of y
-		cout << "Error: Illegal move" << endl << "N" << endl;
+		cout << "Error: Illegal move" << endl;
 		return false;
 	}
 
@@ -1809,7 +1771,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 	else if (player == 2 && ydist > 0 && (CMCheckersBoard[xvalFROM][yvalFROM] == REDMULE) || (CMCheckersBoard[xvalFROM][yvalFROM] == REDSOLDIER))
 	{
 		//changed sign of y
-		cout << "Error: Illegal move" << endl << "O" << endl;
+		cout << "Error: Illegal move" << endl ;
 		return false;
 	}
 
