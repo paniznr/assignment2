@@ -17,13 +17,13 @@ const int MAX_ARRAY_SIZE = 18;
 
 const int MIN_ARRAY_SIZE = 8;
 
-const int MAX_PIECES = 72; //might not need
+const int MAX_PIECES = 72; 
 
 const int NOPLAYER = 0;
 
-const int WHITEWINS = 1; //might not need
+const int WHITEWINS = 1; 
 
-const int REDWINS = 2;//might not need
+const int REDWINS = 2;
 
 const int NOONEWINS = 0;
 
@@ -61,9 +61,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 
 bool CheckWin(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsInBoard);
 
-//void PossibleSquareMove(int Array1[], int Array2[], int xindex, int yindex)
 
-//void PossibleSquareJump()
 
 
 int main()
