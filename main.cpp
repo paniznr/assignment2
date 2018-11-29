@@ -802,7 +802,7 @@ int CountJumps(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsI
 				{
 					white_player_jump++;
 
-					for (int xindex = 0; xindex < numRowsInBoard; xindex++)
+					for (int xindex = 0; xindex < MAX_PIECES; xindex++)
 					{
 						if (xLocArray[xindex] == -1)
 						{
@@ -811,7 +811,7 @@ int CountJumps(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsI
 						}
 					}
 
-					for (int yindex = 0; yindex < numRowsInBoard; yindex++)
+					for (int yindex = 0; yindex < MAX_PIECES; yindex++)
 					{
 						if (yLocArray[yindex] == -1)
 						{
@@ -829,7 +829,7 @@ int CountJumps(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsI
 				{
 					red_player_jump++;
 
-					for (int xindex = 0; xindex < numRowsInBoard; xindex++)
+					for (int xindex = 0; xindex < MAX_PIECES; xindex++)
 					{
 						if (xLocArray[xindex] == -1)
 						{
@@ -838,7 +838,7 @@ int CountJumps(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsI
 						}
 					}
 
-					for (int yindex = 0; yindex < numRowsInBoard; yindex++)
+					for (int yindex = 0; yindex < MAX_PIECES; yindex++)
 					{
 						if (yLocArray[yindex] == -1)
 						{
