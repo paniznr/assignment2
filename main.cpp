@@ -108,7 +108,6 @@ int main()
 		else
 		{
 			cout << "Enter the number of squares along each edge of the board\n";
-			//cin>>numRowsInBoard;
 
 			if (!(cin >> numRowsInBoard))
 			{
@@ -284,20 +283,20 @@ int main()
 
 					else if (!((myCMCheckersBoard[xvalTO][yvalTO]) == NOPLAYER))
 					{
-						cout << "ERROR: It is not possible to move to a square that is already occupied." << endl << "Try again" << endl;
+						cerr << "ERROR: It is not possible to move to a square that is already occupied." << endl << "Try again" << endl;
 						continue;
 					}
 
 					else if (xdist == 0)
 					{
 						cerr << "ERROR: Illegal move" << endl;
-						cerr << "ERROR: Moving to that square is not legal, Try again." << "SET" << endl;
+						cerr << "ERROR: Moving to that square is not legal, Try again."  << endl;
 						continue;
 					}
 					else if (ydist == 0)
 					{
 						cerr << "ERROR: Illegal move" << endl;
-						cerr << "ERROR: Moving to that square is not legal, Try again." << "GET" << endl;
+						cerr << "ERROR: Moving to that square is not legal, Try again." << endl;
 						continue;
 					}
 
@@ -311,7 +310,7 @@ int main()
 						if (move_made == false)
 						{
 
-							cerr << "ERROR: Moving to that square is not legal, Try again." << "GO" << endl;
+							cerr << "ERROR: Moving to that square is not legal, Try again." << endl;
 						}
 						else if (jumped == true)
 						{
@@ -328,21 +327,7 @@ int main()
 
 					}
 
-					/*else if (((IsJump(myCMCheckersBoard, numRowsInBoard, turn, xvalTO, yvalTO)) == true) && (IsMove1Square(myCMCheckersBoard, numRowsInBoard, turn, xvalTO, yvalTO)) == true)
-					{
-						if ((abs(ydist) == 1))
-						{
-							cerr << "ERROR: You can jump with this checker, you must jump not move 1 space" << endl
-								<< "Try again" << endl;
-							continue;
-						}
-
-					}
-
-					else
-					{
-									right_move=true;
-							}*/
+					
 
 
 				}
