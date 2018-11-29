@@ -106,7 +106,6 @@ int main()
 		else
 		{
 			cout << "Enter the number of squares along each edge of the board\n";
-			//cin>>numRowsInBoard;
 
 			if (!(cin >> numRowsInBoard))
 			{
@@ -168,15 +167,10 @@ int main()
 			else
 			{
 				cout << "White takes a turn.\n";
-				//cout << "Enter the square number of the checker you want to move";
-				//cin >> intended_move;
-
-				//xvalFROM = intended_move % numRowsInBoard;
-				//yvalFROM = intended_move / numRowsInBoard;
+				
 
 				while (right_move == false)
 				{
-					//cout << "White takes a turn.\n";
 					cout << "Enter the square number of the checker you want to move" << endl;
 					cin >> intended_move;
 
@@ -207,17 +201,13 @@ int main()
 					}
 					else if ((myCMCheckersBoard[xvalFROM][yvalFROM] != WHITEKING) && (myCMCheckersBoard[xvalFROM][yvalFROM] != WHITEMULE) && (myCMCheckersBoard[xvalFROM][yvalFROM] != WHITESOLDIER))
 					{
-						//cout << myCMCheckersBoard[xvalFROM][yvalFROM];
-						//cout << xvalFROM;
-						//cout << yvalFROM;
+						
 						cerr << "ERROR: That square is empty." << endl
 							<< "Try again" << endl;
 						continue;
 					}
-					//else if (IsJump(myCMCheckersBoard, numRowsInBoard, turn, xvalFROM, yvalFROM))
 
 
-					///GO BACK AND CHECK
 					else if (CheckList(xIndicesJump, yIndicesJump, xvalFROM, yvalFROM) == true)
 					{
 						cerr << "ERROR: You can jump with another checker, you may not move your chosen checker." << endl
@@ -226,7 +216,6 @@ int main()
 							<< "Try again" << endl;
 						continue;
 					}
-					///GO BACK AND CHECK
 					else if (!(CheckList(xIndicesMove, yIndicesMove, xvalFROM, yvalFROM)))
 					{
 						cerr << "ERROR: There is no legal move for this checker." << endl
