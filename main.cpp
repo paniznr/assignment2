@@ -717,6 +717,7 @@ void DisplayBoard(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRo
 		}
 		cout << endl;
 	}
+	cout<<endl;
 }
 
 
