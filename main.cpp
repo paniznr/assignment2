@@ -175,15 +175,9 @@ int main()
 			else
 			{
 				cout << "White takes a turn.\n";
-				//cout << "Enter the square number of the checker you want to move";
-				//cin >> intended_move;
-
-				//xvalFROM = intended_move % numRowsInBoard;
-				//yvalFROM = intended_move / numRowsInBoard;
-
+				
 				while (right_move == false)
 				{
-					//cout << "White takes a turn.\n";
 					cout << "Enter the square number of the checker you want to move" << endl;
 					cin >> intended_move;
 
@@ -214,14 +208,11 @@ int main()
 					}
 					else if ((myCMCheckersBoard[xvalFROM][yvalFROM] != WHITEKING) && (myCMCheckersBoard[xvalFROM][yvalFROM] != WHITEMULE) && (myCMCheckersBoard[xvalFROM][yvalFROM] != WHITESOLDIER))
 					{
-						//cout << myCMCheckersBoard[xvalFROM][yvalFROM];
-						//cout << xvalFROM;
-						//cout << yvalFROM;
+						
 						cerr << "ERROR: That square is empty." << endl
 							<< "Try again" << endl;
 						continue;
 					}
-					//else if (IsJump(myCMCheckersBoard, numRowsInBoard, turn, xvalFROM, yvalFROM))
 
 
 					
@@ -233,7 +224,6 @@ int main()
 							<< "Try again" << endl;
 						continue;
 					}
-					///GO BACK AND CHECK
 					else if (!(CheckList(xIndicesMove, yIndicesMove, xvalFROM, yvalFROM)))
 					{
 						cerr << "ERROR: There is no legal move for this checker." << endl
@@ -257,8 +247,7 @@ int main()
 					xvalTO = future_placement % numRowsInBoard;
 					yvalTO = future_placement / numRowsInBoard;
 
-					//xvalFROM = intended_move % numRowsInBoard;
-					//yvalFROM = intended_move / numRowsInBoard;
+					
 
 				//	unsigned
 					int absltxdist = 0;
