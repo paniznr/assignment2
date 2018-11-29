@@ -269,7 +269,7 @@ int main()
 
 					else if (!((myCMCheckersBoard[xvalTO][yvalTO]) == NOPLAYER))
 					{
-						cout << "ERROR: It is not possible to move to a square that is already occupied." << endl << "Try again" << endl;
+						cerr << "ERROR: It is not possible to move to a square that is already occupied." << endl << "Try again" << endl;
 						continue;
 					}
 
@@ -475,35 +475,13 @@ int main()
 						{
 							right_move = true;
 						}
-
 					}
-
-					/*else if (((IsJump(myCMCheckersBoard, numRowsInBoard, turn, xvalTO, yvalTO)) == true) && (IsMove1Square(myCMCheckersBoard, numRowsInBoard, turn, xvalTO, yvalTO)) == true)
-					{
-						if ((abs(ydist) == 1))
-						{
-							cerr << "ERROR: You can jump with this checker, you must jump not move 1 space" << endl
-								<< "Try again" << endl;
-							continue;
-						}
-
-					}
-
-					else
-					{
-									right_move=true;
-							}*/
-
-
 				}
-
-
 			}
 		}
 
 		cout << "HELLO!" << endl;
 
-		//turn++;
 		cout << turn << endl;
 		check_win_now = CheckWin(myCMCheckersBoard, numRowsInBoard);
 		cout << check_win_now;
@@ -534,13 +512,11 @@ void InitializeBoard(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int nu
 				if (col % 2 == 0) //even column
 				{
 					CMCheckersBoard[col][row] = { 0 };
-					cout << CMCheckersBoard[col][row];
 				}
 				else
 				{
 
 					CMCheckersBoard[col][row] = { 2 };
-					cout << CMCheckersBoard[col][row];
 
 				}
 			}
