@@ -250,8 +250,8 @@ int main()
 				xvalTO = future_placement % numRowsInBoard;
 				yvalTO = future_placement / numRowsInBoard;
 
-			/*	xvalFROM = intended_move % numRowsInBoard;
-				yvalFROM = intended_move / numRowsInBoard;*/
+				/*	xvalFROM = intended_move % numRowsInBoard;
+					yvalFROM = intended_move / numRowsInBoard;*/
 
 				unsigned int absltxdist = 0;
 				unsigned int absltydist = 0;
@@ -292,9 +292,9 @@ int main()
 				}
 
 				//else if (!(future_placement == NOPLAYER))
-				else if (!((myCMCheckersBoard[xvalTO][yvalTO])==NOPLAYER))
+				else if (!((myCMCheckersBoard[xvalTO][yvalTO]) == NOPLAYER))
 				{
-					cout << "ERROR: It is not possible to move to a square that is already occupied." << endl	<< "Try again" << endl;
+					cout << "ERROR: It is not possible to move to a square that is already occupied." << endl << "Try again" << endl;
 					continue;
 				}
 
@@ -310,18 +310,18 @@ int main()
 					cerr << "ERROR: Moving to that square is not legal, Try again." << endl;
 					continue;
 				}
-				
+
 				else
 				{
 					//right_move = true;
-				
+
 					move_made = MakeMove(myCMCheckersBoard, numRowsInBoard, turn, intended_move, future_placement, jumped);
 
 					DisplayBoard(myCMCheckersBoard, numRowsInBoard);
 
 					if (move_made == false)
 					{
-						
+
 						cerr << "ERROR: Moving to that square is not legal, Try again." << endl;
 					}
 					else if (jumped == true)
@@ -335,7 +335,7 @@ int main()
 					{
 						right_move = true;
 					}
-					
+
 				}
 
 				/*else if (((IsJump(myCMCheckersBoard, numRowsInBoard, turn, xvalTO, yvalTO)) == true) && (IsMove1Square(myCMCheckersBoard, numRowsInBoard, turn, xvalTO, yvalTO)) == true)
@@ -351,9 +351,9 @@ int main()
 
 				else
 				{
-                    			right_move=true;
-                		}*/
-                
+								right_move=true;
+						}*/
+
 
 			}
 
@@ -1232,7 +1232,6 @@ bool IsJump(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsInBo
 
 
 
-
 bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsInBoard, int player, int fromSquareNum, int toSquareNum, bool &jumped)
 {
 	int xvalTO = 0;
@@ -1248,6 +1247,10 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 	yvalTO = toSquareNum / numRowsInBoard;
 	xvalFROM = fromSquareNum % numRowsInBoard;
 	yvalFROM = fromSquareNum / numRowsInBoard;
+	//cout << xvalFROM << endl << yvalFROM << endl;
+
+	//ALL X ARE COLUMNS AND ALL Y ARE ROWS
+
 	xdist = (xvalTO - xvalFROM);
 	if (xdist < 0)
 	{
@@ -1267,6 +1270,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 	{
 		absltydist = ydist;
 	}
+	cout << absltxdist << endl << absltydist << endl;
 	//if (!IsJump(CMCheckersBoard, numRowsInBoard, player, xvalFROM, yvalFROM))
 	//{
 	// //it cant jump
@@ -1277,75 +1281,121 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 	//}
 	//cross-board move
 	//last or first
-	if (numRowsInBoard - 1 == absltxdist && absltydist == 1)
+
+
+
+	//JUST MOVING
+	if (numRowsInBoard - 1 == absltxdist && absltydist == 1) //ACROSS WHOLE ROW AND JUST ONE ROW DOWN
 	{
 		if (CMCheckersBoard[xvalFROM][yvalFROM] == WHITESOLDIER)
 		{
-			CMCheckersBoard[xvalFROM][yvalFROM] = 0;
-			CMCheckersBoard[xvalTO][yvalTO] = WHITESOLDIER;
+			if (CMCheckersBoard[xvalTO][yvalTO] == 0)
+			{
+				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
+				CMCheckersBoard[xvalTO][yvalTO] = WHITESOLDIER;
+			}
+
 		}
 		else if (CMCheckersBoard[xvalFROM][yvalFROM] == WHITEMULE)
 		{
-			CMCheckersBoard[xvalFROM][yvalFROM] = 0;
-			CMCheckersBoard[xvalTO][yvalTO] = WHITEMULE;
+			if (CMCheckersBoard[xvalTO][yvalTO] == 0)
+			{
+				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
+				CMCheckersBoard[xvalTO][yvalTO] = WHITEMULE;
+			}
+
+		}
+		else if (CMCheckersBoard[xvalFROM][yvalFROM] == WHITEKING)
+		{
+			if (CMCheckersBoard[xvalTO][yvalTO] == 0)
+			{
+				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
+				CMCheckersBoard[xvalTO][yvalTO] = WHITEKING;
+			}
+
 		}
 		else if (CMCheckersBoard[xvalFROM][yvalFROM] == REDSOLDIER)
 		{
-			CMCheckersBoard[xvalFROM][yvalFROM] = 0;
-			CMCheckersBoard[xvalTO][yvalTO] = REDSOLDIER;
+			if (CMCheckersBoard[xvalTO][yvalTO] == 0)
+			{
+				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
+				CMCheckersBoard[xvalTO][yvalTO] = REDSOLDIER;
+			}
 		}
 		else if (CMCheckersBoard[xvalFROM][yvalFROM] == REDMULE)
 		{
-			CMCheckersBoard[xvalFROM][yvalFROM] = 0;
-			CMCheckersBoard[xvalTO][yvalTO] = REDMULE;
+			if (CMCheckersBoard[xvalTO][yvalTO] == 0)
+			{
+				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
+				CMCheckersBoard[xvalTO][yvalTO] = REDMULE;
+			}
+		}
+		else if (CMCheckersBoard[xvalFROM][yvalFROM] == REDKING)
+		{
+			if (CMCheckersBoard[xvalTO][yvalTO] == 0)
+			{
+				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
+				CMCheckersBoard[xvalTO][yvalTO] = REDKING;
+			}
 		}
 
+
 	}
-	else if (((numRowsInBoard - 2 )== xdist || (numRowsInBoard - 2 )== absltxdist) && (ydist == 2))
+
+	//JUST JUMPING
+	else if (numRowsInBoard - 2 == absltxdist && absltydist == 2)
 	{
 		//cross board jump
 		//check if middle is empty
 		if ((xvalTO == 0) && (ydist > 0))
 		{
-			yvalFROM++;
-			if (CMCheckersBoard[numRowsInBoard - 1][yvalFROM] == 0)
+			//yvalFROM++;
+			if (CMCheckersBoard[numRowsInBoard - 1][yvalFROM + 1] == 0)
 			{
 				//middle is empty
-				cout << "error: illegal move";
+				cout << "Error: Illegal move" << endl << "A" << endl;
 				return false;
 			}
 			//if it didnt make it into that  if, then it was just incremented and decremented so its like nothing even happened so its okay
-			yvalFROM--;
+			//yvalFROM--;
 
 			//actually move the stuff
-			CMCheckersBoard[xvalTO][yvalTO] = CMCheckersBoard[xvalFROM][yvalFROM];
-			CMCheckersBoard[xvalFROM][yvalFROM] = 0;
-			yvalFROM++;
-			CMCheckersBoard[numRowsInBoard - 1][yvalFROM] = 0;
-			yvalFROM--;
-			jumped = true;
+			else
+			{
+
+				CMCheckersBoard[xvalTO][yvalTO] = CMCheckersBoard[xvalFROM][yvalFROM];
+				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
+				//yvalFROM++;
+				CMCheckersBoard[numRowsInBoard - 1][yvalFROM + 1] = 0;
+				//yvalFROM--;
+				jumped = true;
+			}
+
 		}
 
 		//cross board jump
 		//gotta check if middle is empty
 		else if ((xvalTO == 0) && (ydist < 0))
 		{
-			yvalFROM--;
-			if (CMCheckersBoard[numRowsInBoard - 1][yvalFROM] == 0)
+			//yvalFROM--;
+			if (CMCheckersBoard[numRowsInBoard - 1][yvalFROM + 1] == 0)
 			{
 				//middle is empty
-				cout << "error: illegal move";
+				cout << "Error: Illegal move" << endl << "B" << endl;
 				return false;
 			}
-			yvalFROM++;
+			//yvalFROM++;
+			else
+			{
+				//actually move the stuff
+				CMCheckersBoard[xvalTO][yvalTO] = CMCheckersBoard[xvalFROM][yvalFROM];
+				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
+				//yvalFROM--;
+				CMCheckersBoard[numRowsInBoard - 1][yvalFROM - 1] = 0;
+				//yvalFROM++;
+				jumped = true;
+			}
 
-			//actually move the stuff
-			CMCheckersBoard[xvalTO][yvalTO] = CMCheckersBoard[xvalFROM][yvalFROM];
-			CMCheckersBoard[xvalFROM][yvalFROM] = 0;
-			yvalFROM--;
-			CMCheckersBoard[numRowsInBoard - 1][yvalFROM] = 0;
-			yvalFROM++;
-			jumped = true;
 
 		}
 
@@ -1353,226 +1403,316 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 		//gotta check if middle is empty
 		else if ((xvalTO == 1) && (ydist > 0))
 		{
-			yvalFROM++;
-			if (CMCheckersBoard[0][yvalFROM] == 0)
+			//yvalFROM++;
+			if (CMCheckersBoard[0][yvalFROM + 1] == 0)
 			{
 				//middle is empty
-				cout << "error: illegal move";
+				cout << "Error: Illegal move" << endl << "C" << endl;
 				return false;
 			}
-			yvalFROM--;
+			//yvalFROM--;
+			else
+			{
+				//actually move the stuff
+				CMCheckersBoard[xvalTO][yvalTO] = CMCheckersBoard[xvalFROM][yvalFROM];
+				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
+				//yvalFROM++;
+				CMCheckersBoard[0][yvalFROM + 1] = 0;
+				//yvalFROM--;
+				jumped = true;
+			}
 
-			//actually move the stuff
-			CMCheckersBoard[xvalTO][yvalTO] = CMCheckersBoard[xvalFROM][yvalFROM];
-			CMCheckersBoard[xvalFROM][yvalFROM] = 0;
-			yvalFROM++;
-			CMCheckersBoard[0][yvalFROM] = 0;
-			yvalFROM--;
-			jumped = true;
 		}
 		//cross board jump
 		//gotta check if middle is empty
 		else if ((xvalTO == 1) && (ydist < 0))
 		{
-			yvalFROM--;
-			if (CMCheckersBoard[0][yvalFROM] == 0)
+			//yvalFROM--;
+			if (CMCheckersBoard[0][yvalFROM - 1] == 0)
 			{
 				//middle is empty
-				cout << "error: illegal move";
+				cout << "Error: Illegal move" << endl << "D" << endl;
 				return false;
 			}
-			yvalFROM++;
+			//yvalFROM++;
 
-			//actually move the stuff
-			CMCheckersBoard[xvalTO][yvalTO] = CMCheckersBoard[xvalFROM][yvalFROM];
-			CMCheckersBoard[xvalFROM][yvalFROM] = 0;
-			yvalFROM--;
-			CMCheckersBoard[0][yvalFROM] = 0;
-			yvalFROM++;
-			jumped = true;
+			else
+			{
+				//actually move the stuff
+				CMCheckersBoard[xvalTO][yvalTO] = CMCheckersBoard[xvalFROM][yvalFROM];
+				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
+				//yvalFROM--;
+				CMCheckersBoard[0][yvalFROM - 1] = 0;
+				//yvalFROM++;
+				jumped = true;
+			}
+
 		}
 
 		//cross board jump
 		//gotta check if middle is empty
-		else if ((xvalTO == (numRowsInBoard - 1) && (ydist > 0)))
+		else if ((xvalTO == (numRowsInBoard - 1)) && (ydist > 0))
 		{
-			yvalFROM++;
-			if (CMCheckersBoard[0][yvalFROM] == 0)
+			//yvalFROM++;
+			if (CMCheckersBoard[0][yvalFROM + 1] == 0)
 			{
 				//middle is empty
-				cout << "error: illegal move";
+				cout << "Error: Illegal move" << endl << "E" << endl;
 				return false;
 			}
-			yvalFROM--;
+			//yvalFROM--;
+			else
+			{
+				//actually move the stuff
+				CMCheckersBoard[xvalTO][yvalTO] = CMCheckersBoard[xvalFROM][yvalFROM];
+				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
+				//yvalFROM++;
+				CMCheckersBoard[0][yvalFROM + 1] = 0;
+				//yvalFROM--;
+				jumped = true;
+			}
 
-			//actually move the stuff
-			CMCheckersBoard[xvalTO][yvalTO] = CMCheckersBoard[xvalFROM][yvalFROM];
-			CMCheckersBoard[xvalFROM][yvalFROM] = 0;
-			yvalFROM++;
-			CMCheckersBoard[0][yvalFROM] = 0;
-			yvalFROM--;
-			jumped = true;
 		}
 		//cross board jump
 		//gotta check if middle is empty
-		else if ((xvalTO == (numRowsInBoard - 1) && (ydist < 0)))
+		else if ((xvalTO == (numRowsInBoard - 1)) && (ydist < 0))
 		{
-			yvalFROM--;
-			if (CMCheckersBoard[0][yvalFROM] == 0)
+			//yvalFROM--;
+			if (CMCheckersBoard[0][yvalFROM - 1] == 0)
 			{
 				//middle is empty
-				cout << "error: illegal move";
+				cout << "Error: Illegal move" << endl << "F" << endl;
 				return false;
 			}
-			yvalFROM++;
+			//yvalFROM++;
+			else
+			{
+				//actually move the stuff
+				CMCheckersBoard[xvalTO][yvalTO] = CMCheckersBoard[xvalFROM][yvalFROM];
+				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
+				//yvalFROM--;
+				CMCheckersBoard[0][yvalFROM - 1] = 0;
+				//yvalFROM++;
+				jumped = true;
+			}
 
-			//actually move the stuff
-			CMCheckersBoard[xvalTO][yvalTO] = CMCheckersBoard[xvalFROM][yvalFROM];
-			CMCheckersBoard[xvalFROM][yvalFROM] = 0;
-			yvalFROM--;
-			CMCheckersBoard[0][yvalFROM] = 0;
-			yvalFROM++;
-			jumped = true;
 		}
 		//cross board jump
 		//gotta check if middle is empty
 		else if ((xvalTO == (numRowsInBoard - 2) && (ydist > 0)))
 		{
-			yvalFROM++;
-			if (CMCheckersBoard[numRowsInBoard - 1][yvalFROM] == 0)
+			//yvalFROM++;
+			if (CMCheckersBoard[numRowsInBoard - 1][yvalFROM + 1] == 0)
 			{
 				//middle is empty
-				cout << "error: illegal move";
+				cout << "Error: Illegal move" << endl << "G" << endl;
 				return false;
 			}
-			yvalFROM--;
+			//yvalFROM--;
+			else
+			{
+				//actually move the stuff
+				CMCheckersBoard[xvalTO][yvalTO] = CMCheckersBoard[xvalFROM][yvalFROM];
+				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
+				//yvalFROM++;
+				CMCheckersBoard[0][yvalFROM + 1] = 0;
+				//yvalFROM--;
+				jumped = true;
+			}
 
-			//actually move the stuff
-			CMCheckersBoard[xvalTO][yvalTO] = CMCheckersBoard[xvalFROM][yvalFROM];
-			CMCheckersBoard[xvalFROM][yvalFROM] = 0;
-			yvalFROM++;
-			CMCheckersBoard[numRowsInBoard - 1][yvalFROM] = 0;
-			yvalFROM--;
-			jumped = true;
 		}
 		//cross board jump
 		//gotta check if middle is empty
 		else if ((xvalTO == (numRowsInBoard - 2) && (ydist < 0)))
 		{
-			yvalFROM--;
-			if (CMCheckersBoard[numRowsInBoard - 1][yvalFROM] == 0)
+			//yvalFROM--;
+			if (CMCheckersBoard[numRowsInBoard - 1][yvalFROM - 1] == 0)
 			{
 				//middle is empty
-				cout << "error: illegal move";
+				cout << "Error: Illegal move" << endl << "H" << endl;
 				return false;
 			}
-			yvalFROM++;
+			//yvalFROM++;
+			else
+			{
+				//actually move the stuff
+				CMCheckersBoard[xvalTO][yvalTO] = CMCheckersBoard[xvalFROM][yvalFROM];
+				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
+				//yvalFROM--;
+				CMCheckersBoard[numRowsInBoard - 1][yvalFROM - 1] = 0;
+				//yvalFROM++;
+				jumped = true;
+			}
 
-			//actually move the stuff
-			CMCheckersBoard[xvalTO][yvalTO] = CMCheckersBoard[xvalFROM][yvalFROM];
-			CMCheckersBoard[xvalFROM][yvalFROM] = 0;
-			yvalFROM--;
-			CMCheckersBoard[numRowsInBoard - 1][yvalFROM] = 0;
-			yvalFROM++;
-			jumped = true;
 		}
 	}
-	//else if (absltxdist > 2 || absltydist > 2)
-	else if (xdist > 2 || ydist > 2)
-	//^^^^^this if statement worked better for me for now
-
+	else if (absltxdist > 2 || absltydist > 2)
 		//SHOULD THIS BE else if (absltxdist>2 && absltydist>2)
 		//OR POSSIBLY else if (absltdist>2)
 		//if it moved too many
 	{
-		cout << "Error: illegal move";
+		cout << "Error: Illegal move" << endl << "I" << endl;
 		return false;
 	}
+
+
+
+
+
+
+
+
+
+	///COMBINE THE IF STATEMENTS INTO ELSE IF!!!
+
+
 	else if (absltxdist == 2 && absltydist == 2)
 	{
 		//jump
 		//to see if middle is empty
 		if (xdist < 0)
 		{
-			xvalFROM++;
+			//xvalFROM++;
 			if (ydist > 0)//changed sign
 			{
-				yvalFROM++;
-				if (CMCheckersBoard[xvalFROM][yvalFROM] == 0)
+				//yvalFROM++;
+				if (CMCheckersBoard[xvalFROM - 1][yvalFROM + 1] == 0)
 				{
-					cout << "error: illegal move";
+					cout << "Error: Illegal move" << endl << "J" << endl;
 					return false;
 				}
-				yvalFROM--;
+				//yvalFROM--;
 			}
-			xvalFROM--;
+			//xvalFROM--;
 		}
 		if (xdist < 0)
 		{
-			xvalFROM++;
+			//xvalFROM++;
 			if (ydist < 0)//changed sign
 			{
-				yvalFROM--;
-				if (CMCheckersBoard[xvalFROM][yvalFROM] == 0)
+				//yvalFROM--;
+				if (CMCheckersBoard[xvalFROM - 1][yvalFROM - 1] == 0)
 				{
-					cout << "error: illegal move";
+					cout << "Error: Illegal move" << endl << "K" << endl;
 					return false;
 				}
-				yvalFROM++;
+				//yvalFROM++;
 			}
-			xvalFROM--;
+			//xvalFROM--;
 		}
 		if (xdist > 0)
 		{
-			xvalFROM--;
+			//xvalFROM--;
 			if (ydist < 0)//changed sign
 			{
-				yvalFROM--;
-				if (CMCheckersBoard[xvalFROM][yvalFROM] == 0)
+				//yvalFROM--;
+				if (CMCheckersBoard[xvalFROM + 1][yvalFROM - 1] == 0)
 				{
-					cout << "error: illegal move";
+					cout << "Error: Illegal move" << endl << "L" << endl;
 					return false;
 				}
-				yvalFROM++;
+				//yvalFROM++;
 			}
-			xvalFROM++;
+			//xvalFROM++;
 		}
 		if (xdist > 0)
 		{
-			xvalFROM--;
+			//xvalFROM--;
 			if (ydist > 0)//changed sign
 			{
-				yvalFROM++;
-				if (CMCheckersBoard[xvalFROM][yvalFROM] == 0)
+				//yvalFROM++;
+				if (CMCheckersBoard[xvalFROM - +1][yvalFROM + 1] == 0)
 				{
-					cout << "error: illegal move";
+					cout << "Error: Illegal move" << endl << "M" << endl;
 					return false;
 				}
-				yvalFROM--;
+				//yvalFROM--;
 			}
-			xvalFROM++;
+			//xvalFROM++;
 		}
 	}
+
+
+
+
+
+
 	//if it is moving in the wrong direction
-	else if (player == 1 && ydist > 0 && (CMCheckersBoard[xvalFROM][yvalFROM] == WHITEMULE) || (CMCheckersBoard[xvalFROM][yvalFROM] == WHITESOLDIER))
+	//NOTE: I CHANGED THE DIRECTION OF THE YDIST
+	else if (player == 1 && ydist < 0 && ((CMCheckersBoard[xvalFROM][yvalFROM] == WHITEMULE) || (CMCheckersBoard[xvalFROM][yvalFROM] == WHITESOLDIER)))
 	{
 		//changed sign of y
-		cout << "Error: illegal move";
+		cout << "Error: Illegal move" << endl << "N" << endl;
 		return false;
 	}
+
+
 	//if it is moving in the wrong direction
-	
-	else if (player == 2 && ydist < 0 && (CMCheckersBoard[xvalFROM][yvalFROM] == REDMULE) || (CMCheckersBoard[xvalFROM][yvalFROM] == REDSOLDIER))
+	//NOTE: I CHANGED THE DIRECTION OF THE YDIST
+	else if (player == 2 && ydist > 0 && (CMCheckersBoard[xvalFROM][yvalFROM] == REDMULE) || (CMCheckersBoard[xvalFROM][yvalFROM] == REDSOLDIER))
 	{
 		//changed sign of y
-		cout << "Error: illegal move";
+		cout << "Error: Illegal move" << endl << "O" << endl;
 		return false;
 	}
-	//else if ((absltxdist == 1) && (absltydist == 1))
-	else if ((xdist == 1) && (ydist == 1))
-	//^^^^^^^^^^^ this if statement worked better for me for now
+
+
+	else if ((absltxdist == 1) && (absltydist == 1))
 	{
 		//moved diagonally 1
+		if (CMCheckersBoard[xvalFROM][yvalFROM] == WHITESOLDIER)
+		{
+			if (CMCheckersBoard[xvalTO][yvalTO] == 0)
+			{
+				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
+				CMCheckersBoard[xvalTO][yvalTO] = WHITESOLDIER;
+			}
+
+		}
+		else if (CMCheckersBoard[xvalFROM][yvalFROM] == WHITEMULE)
+		{
+			if (CMCheckersBoard[xvalTO][yvalTO] == 0)
+			{
+				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
+				CMCheckersBoard[xvalTO][yvalTO] = WHITEMULE;
+			}
+
+		}
+		else if (CMCheckersBoard[xvalFROM][yvalFROM] == WHITEKING)
+		{
+			if (CMCheckersBoard[xvalTO][yvalTO] == 0)
+			{
+				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
+				CMCheckersBoard[xvalTO][yvalTO] = WHITEKING;
+			}
+
+		}
+		else if (CMCheckersBoard[xvalFROM][yvalFROM] == REDSOLDIER)
+		{
+			if (CMCheckersBoard[xvalTO][yvalTO] == 0)
+			{
+				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
+				CMCheckersBoard[xvalTO][yvalTO] = REDSOLDIER;
+			}
+		}
+		else if (CMCheckersBoard[xvalFROM][yvalFROM] == REDMULE)
+		{
+			if (CMCheckersBoard[xvalTO][yvalTO] == 0)
+			{
+				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
+				CMCheckersBoard[xvalTO][yvalTO] = REDMULE;
+			}
+		}
+		else if (CMCheckersBoard[xvalFROM][yvalFROM] == REDKING)
+		{
+			if (CMCheckersBoard[xvalTO][yvalTO] == 0)
+			{
+				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
+				CMCheckersBoard[xvalTO][yvalTO] = REDKING;
+			}
+		}
+
+		/*
 		if (CMCheckersBoard[xvalFROM][yvalFROM] == WHITESOLDIER)
 		{
 			CMCheckersBoard[xvalFROM][yvalFROM] = 0;
@@ -1592,11 +1732,9 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 		{
 			CMCheckersBoard[xvalFROM][yvalFROM] = 0;
 			CMCheckersBoard[xvalTO][yvalTO] = REDMULE;
-		}
+		}*/
 	}
-	//else if (absltxdist == 2 && absltydist == 2)
-	else if (xdist == 2 && ydist == 2)
-	//^^^^^^^^^^^^this if statement worked better for me for now
+	else if (absltxdist == 2 && absltydist == 2)
 	{
 		//moved diagonally 2 (jump)
 		CMCheckersBoard[xvalTO][yvalTO] = CMCheckersBoard[xvalFROM][yvalFROM];
@@ -1604,57 +1742,59 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 
 		if (xdist < 0)
 		{
-			xvalFROM++;
+			//xvalFROM++;
 			if (ydist > 0)
 				//changed sign of y
 			{
-				yvalFROM++;
-				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
-				yvalFROM--;
+				//yvalFROM++;
+				CMCheckersBoard[xvalFROM - 1][yvalFROM + 1] = 0;
+				//yvalFROM--;
 			}
-			xvalFROM--;
+			//xvalFROM--;
 			jumped = true;
 		}
 
 		else if (xdist < 0)
 		{
-			xvalFROM++;
+			//xvalFROM++;
 			if (ydist < 0)
 			{
-				yvalFROM--;
-				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
-				yvalFROM++;
+				//yvalFROM--;
+				CMCheckersBoard[xvalFROM - 1][yvalFROM - 1] = 0;
+				//yvalFROM++;
 			}
-			xvalFROM--;
+			//xvalFROM--;
 			jumped = true;
 		}
 
 		else if (xdist > 0)
 		{
-			xvalFROM--;
+			//xvalFROM--;
 			if (ydist < 0)
 			{
-				yvalFROM--;
-				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
-				yvalFROM++;
+				//yvalFROM--;
+				CMCheckersBoard[xvalFROM + 1][yvalFROM - 1] = 0;
+				//yvalFROM++;
 			}
-			xvalFROM++;
+			//xvalFROM++;
 			jumped = true;
 		}
 
 		else if (xdist > 0)
 		{
-			xvalFROM--;
+			//xvalFROM--;
 			if (ydist > 0)
 			{
-				yvalFROM++;
-				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
-				yvalFROM--;
+				//yvalFROM++;
+				CMCheckersBoard[xvalFROM + 1][yvalFROM + 1] = 0;
+				//yvalFROM--;
 			}
-			xvalFROM++;
+			//xvalFROM++;
 			jumped = true;
 		}
 	}
+
+	//AFTER MOVING IT
 	if ((CMCheckersBoard[xvalTO][yvalTO] == REDMULE) && (yvalTO == 0))
 	{
 		CMCheckersBoard[xvalTO][yvalTO] = REDKING;
