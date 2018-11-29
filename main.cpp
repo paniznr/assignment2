@@ -455,13 +455,13 @@ int main()
 					else if (xdist == 0)
 					{
 						cerr << "ERROR: Illegal move" << endl;
-						cerr << "ERROR: Moving to that square is not legal, Try again." << "SET" << endl;
+						cerr << "ERROR: Moving to that square is not legal, Try again."<< endl;
 						continue;
 					}
 					else if (ydist == 0)
 					{
 						cerr << "ERROR: Illegal move" << endl;
-						cerr << "ERROR: Moving to that square is not legal, Try again." << "GET" << endl;
+						cerr << "ERROR: Moving to that square is not legal, Try again." << endl;
 						continue;
 					}
 
@@ -475,7 +475,7 @@ int main()
 						if (move_made == false)
 						{
 
-							cerr << "ERROR: Moving to that square is not legal, Try again." << "GO" << endl;
+							cerr << "ERROR: Moving to that square is not legal, Try again."  << endl;
 						}
 						else if (jumped == true)
 						{
