@@ -492,21 +492,7 @@ int main()
 
 					}
 
-					/*else if (((IsJump(myCMCheckersBoard, numRowsInBoard, turn, xvalTO, yvalTO)) == true) && (IsMove1Square(myCMCheckersBoard, numRowsInBoard, turn, xvalTO, yvalTO)) == true)
-					{
-						if ((abs(ydist) == 1))
-						{
-							cerr << "ERROR: You can jump with this checker, you must jump not move 1 space" << endl
-								<< "Try again" << endl;
-							continue;
-						}
-
-					}
-
-					else
-					{
-									right_move=true;
-							}*/
+					
 
 
 				}
