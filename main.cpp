@@ -575,17 +575,14 @@ void InitializeBoard(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int nu
 				if (col % 2 == 0) //even column
 				{
 					CMCheckersBoard[col][row] = { 0 };
-					cout << CMCheckersBoard[col][row];
 				}
 				else
 				{
 
 					CMCheckersBoard[col][row] = { 2 };
-					cout << CMCheckersBoard[col][row];
 
 				}
 			}
-			cout << endl;
 		}
 		else if (row == (numRowsInBoard - 1)) //very last row: red mules
 		{
@@ -594,15 +591,12 @@ void InitializeBoard(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int nu
 				if (col % 2 == 0) //even arrays, odd column #
 				{
 					CMCheckersBoard[col][row] = { 5 };
-					cout << CMCheckersBoard[col][row];
 				}
 				else //odd arrays, even column #
 				{
 					CMCheckersBoard[col][row] = { 0 };
-					cout << CMCheckersBoard[col][row];
 				}
 			}
-			cout << endl;
 
 		}
 		else if ((row == ((numRowsInBoard / 2) - 1)) || (row == (numRowsInBoard / 2)))
@@ -610,9 +604,7 @@ void InitializeBoard(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int nu
 			for (col = 0; col < numRowsInBoard; col++)
 			{
 				CMCheckersBoard[col][row] = { 0 };
-				cout << CMCheckersBoard[col][row];
 			}
-			cout << endl;
 
 		}
 
@@ -628,16 +620,13 @@ void InitializeBoard(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int nu
 						if (col % 2 == 0) //even column
 						{
 							CMCheckersBoard[col][row] = { 0 };
-							cout << CMCheckersBoard[col][row];
 						}
 						else
 						{
 
 							CMCheckersBoard[col][row] = { 1 };
-							cout << CMCheckersBoard[col][row];
 						}
 					}
-					cout << endl;
 				}
 				else
 				{
@@ -646,15 +635,12 @@ void InitializeBoard(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int nu
 						if (col % 2 == 0) //even column
 						{
 							CMCheckersBoard[col][row] = { 1 };
-							cout << CMCheckersBoard[col][row];
 						}
 						else
 						{
 							CMCheckersBoard[col][row] = { 0 };
-							cout << CMCheckersBoard[col][row];
 						}
 					}
-					cout << endl;
 				}
 			}
 			else if (row > (numRowsInBoard / 2))
@@ -666,15 +652,12 @@ void InitializeBoard(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int nu
 						if (col % 2 == 0) //even column
 						{
 							CMCheckersBoard[col][row] = { 0 };
-							cout << CMCheckersBoard[col][row];
 						}
 						else
 						{
 							CMCheckersBoard[col][row] = { 4 };
-							cout << CMCheckersBoard[col][row];
 						}
 					}
-					cout << endl;
 
 				}
 				else
@@ -684,15 +667,12 @@ void InitializeBoard(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int nu
 						if (col % 2 == 0) //even column
 						{
 							CMCheckersBoard[col][row] = { 4 };
-							cout << CMCheckersBoard[col][row];
 						}
 						else
 						{
 							CMCheckersBoard[col][row] = { 0 };
-							cout << CMCheckersBoard[col][row];
 						}
 					}
-					cout << endl;
 
 				}
 			}
