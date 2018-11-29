@@ -533,12 +533,10 @@ int main()
 			}
 		}
 
-		cout << "HELLO!" << endl;
 
 		//turn++;
-		cout << turn << endl;
-		check_win_now = CheckWin(myCMCheckersBoard, numRowsInBoard);
-		cout << check_win_now;
+		//check_win_now = CheckWin(myCMCheckersBoard, numRowsInBoard);
+		//cout << check_win_now;
 
 	} while (check_win_now == false);
 
