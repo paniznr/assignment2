@@ -277,7 +277,7 @@ int main()
 
 				if (!future_placement)
 				{
-					cerr << "ERROR: you did not enter an integer" << endl
+					cerr << "you did not enter an integer" << endl
 						<< "Try again" << endl;
 					cin.clear();
 					cin.ignore();
@@ -301,13 +301,13 @@ int main()
 				else if (xdist == 0)
 				{
 					cerr << "ERROR: Illegal move" << endl;
-					cerr << "ERROR: Moving to that square is not legal, Try again." << endl;
+					cerr << "ERROR: Moving to that square is not legal, Try again." << "SET"<< endl;
 					continue;
 				}
 				else if (ydist == 0)
 				{
 					cerr << "ERROR: Illegal move" << endl;
-					cerr << "ERROR: Moving to that square is not legal, Try again." << endl;
+					cerr << "ERROR: Moving to that square is not legal, Try again." <<"GET"<< endl;
 					continue;
 				}
 
@@ -322,7 +322,7 @@ int main()
 					if (move_made == false)
 					{
 
-						cerr << "ERROR: Moving to that square is not legal, Try again." << endl;
+						cerr << "ERROR: Moving to that square is not legal, Try again." << "GO"<<endl;
 					}
 					else if (jumped == true)
 					{
@@ -1249,6 +1249,8 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 	yvalFROM = fromSquareNum / numRowsInBoard;
 	//cout << xvalFROM << endl << yvalFROM << endl;
 
+	bool flag = true;
+
 	//ALL X ARE COLUMNS AND ALL Y ARE ROWS
 
 	xdist = (xvalTO - xvalFROM);
@@ -1293,6 +1295,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 			{
 				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
 				CMCheckersBoard[xvalTO][yvalTO] = WHITESOLDIER;
+				flag = true;
 			}
 
 		}
@@ -1302,6 +1305,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 			{
 				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
 				CMCheckersBoard[xvalTO][yvalTO] = WHITEMULE;
+				flag = true;
 			}
 
 		}
@@ -1311,6 +1315,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 			{
 				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
 				CMCheckersBoard[xvalTO][yvalTO] = WHITEKING;
+				flag = true;
 			}
 
 		}
@@ -1320,6 +1325,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 			{
 				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
 				CMCheckersBoard[xvalTO][yvalTO] = REDSOLDIER;
+				flag = true;
 			}
 		}
 		else if (CMCheckersBoard[xvalFROM][yvalFROM] == REDMULE)
@@ -1328,6 +1334,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 			{
 				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
 				CMCheckersBoard[xvalTO][yvalTO] = REDMULE;
+				flag = true;
 			}
 		}
 		else if (CMCheckersBoard[xvalFROM][yvalFROM] == REDKING)
@@ -1336,6 +1343,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 			{
 				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
 				CMCheckersBoard[xvalTO][yvalTO] = REDKING;
+				flag = true;
 			}
 		}
 
@@ -1369,6 +1377,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 				CMCheckersBoard[numRowsInBoard - 1][yvalFROM + 1] = 0;
 				//yvalFROM--;
 				jumped = true;
+				flag = true;
 			}
 
 		}
@@ -1394,6 +1403,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 				CMCheckersBoard[numRowsInBoard - 1][yvalFROM - 1] = 0;
 				//yvalFROM++;
 				jumped = true;
+				flag = true;
 			}
 
 
@@ -1420,6 +1430,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 				CMCheckersBoard[0][yvalFROM + 1] = 0;
 				//yvalFROM--;
 				jumped = true;
+				flag = true;
 			}
 
 		}
@@ -1445,6 +1456,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 				CMCheckersBoard[0][yvalFROM - 1] = 0;
 				//yvalFROM++;
 				jumped = true;
+				flag = true;
 			}
 
 		}
@@ -1470,6 +1482,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 				CMCheckersBoard[0][yvalFROM + 1] = 0;
 				//yvalFROM--;
 				jumped = true;
+				flag = true;
 			}
 
 		}
@@ -1494,6 +1507,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 				CMCheckersBoard[0][yvalFROM - 1] = 0;
 				//yvalFROM++;
 				jumped = true;
+				flag = true;
 			}
 
 		}
@@ -1518,6 +1532,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 				CMCheckersBoard[0][yvalFROM + 1] = 0;
 				//yvalFROM--;
 				jumped = true;
+				flag = true;
 			}
 
 		}
@@ -1542,6 +1557,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 				CMCheckersBoard[numRowsInBoard - 1][yvalFROM - 1] = 0;
 				//yvalFROM++;
 				jumped = true;
+				flag = true;
 			}
 
 		}
@@ -1666,6 +1682,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 			{
 				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
 				CMCheckersBoard[xvalTO][yvalTO] = WHITESOLDIER;
+				flag = true;
 			}
 
 		}
@@ -1675,6 +1692,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 			{
 				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
 				CMCheckersBoard[xvalTO][yvalTO] = WHITEMULE;
+				flag = true;
 			}
 
 		}
@@ -1684,6 +1702,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 			{
 				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
 				CMCheckersBoard[xvalTO][yvalTO] = WHITEKING;
+				flag = true;
 			}
 
 		}
@@ -1693,6 +1712,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 			{
 				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
 				CMCheckersBoard[xvalTO][yvalTO] = REDSOLDIER;
+				flag = true;
 			}
 		}
 		else if (CMCheckersBoard[xvalFROM][yvalFROM] == REDMULE)
@@ -1701,6 +1721,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 			{
 				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
 				CMCheckersBoard[xvalTO][yvalTO] = REDMULE;
+				flag = true;
 			}
 		}
 		else if (CMCheckersBoard[xvalFROM][yvalFROM] == REDKING)
@@ -1709,6 +1730,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 			{
 				CMCheckersBoard[xvalFROM][yvalFROM] = 0;
 				CMCheckersBoard[xvalTO][yvalTO] = REDKING;
+				flag = true;
 			}
 		}
 
@@ -1739,6 +1761,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 		//moved diagonally 2 (jump)
 		CMCheckersBoard[xvalTO][yvalTO] = CMCheckersBoard[xvalFROM][yvalFROM];
 		CMCheckersBoard[xvalFROM][yvalFROM] = 0;
+		
 
 		if (xdist < 0)
 		{
@@ -1792,6 +1815,7 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 			//xvalFROM++;
 			jumped = true;
 		}
+		flag = true;
 	}
 
 	//AFTER MOVING IT
@@ -1821,7 +1845,13 @@ bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 		CMCheckersBoard[xvalTO][yvalTO] = WHITEKING;
 		return true;
 	}
-	return false;
+	
+	if (jumped == true)
+	{
+		cout << "NICE!" << endl;
+		return flag;
+	}
+	return flag;
 }
 
 
@@ -1888,7 +1918,7 @@ bool CheckWin(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsIn
 		cout << "The Red Player has won by capturing all of the white players soldiers and kings" << endl;
 		win = true;
 	}
-
+	
 	return win;
 }
 
